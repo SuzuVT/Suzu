@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<style>
+
 		@keyframes move {
     100% {
         transform: translate3d(0, 0, 1px) rotate(360deg);
@@ -486,6 +487,97 @@
 }
 
 	</style>
+<style> <!-- ! Efecto Glitch -->
+	@import url('https://fonts.googleapis.com/css?family=Fira+Mono:400');
+
+body{ 
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  background: #131313;
+  color: #fff;
+  font-size: 96px;
+  font-family: 'Fira Mono', monospace;
+  letter-spacing: -7px;
+}
+
+.glitch{
+  animation: glitch 1s linear infinite;
+}
+
+@keyframes glitch{
+  2%,64%{
+    transform: translate(2px,0) skew(0deg);
+  }
+  4%,60%{
+    transform: translate(-2px,0) skew(0deg);
+  }
+  62%{
+    transform: translate(0,0) skew(5deg); 
+  }
+}
+
+div:before,
+div:after{
+  content: attr(title);
+  position: absolute;
+  left: 0;
+}
+
+div:before{
+  animation: glitchTop 1s linear infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+@keyframes glitchTop{
+  2%,64%{
+    transform: translate(2px,-2px);
+  }
+  4%,60%{
+    transform: translate(-2px,2px);
+  }
+  62%{
+    transform: translate(13px,-1px) skew(-13deg); 
+  }
+}
+
+div:after{
+  animation: glitchBotom 1.5s linear infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes glitchBotom{
+  2%,64%{
+    transform: translate(-2px,0);
+  }
+  4%,60%{
+    transform: translate(-2px,0);
+  }
+  62%{
+    transform: translate(-22px,5px) skew(21deg); 
+  }
+}
+
+@font-face {
+    font-family: 'uni';
+    src: url('/fonts/uni/uni.ttf') format('ttf');
+}
+
+
+.titulo {
+    font-size: 24px; /* Tamaño grande de fuente */
+    text-align: center; /* Centrar el texto */
+	font-family: 'uni', sans-serif;
+	
+}
+
+</style>
+
 </head>
 <body>
 	<div class="background">
@@ -539,6 +631,7 @@
 		<span></span>
 		<span></span>
 		<span></span>
+		<h1 class="glitch titulo" style="color: #fff;">Test</h1>
 	 </div>
 </body>
 </html>
